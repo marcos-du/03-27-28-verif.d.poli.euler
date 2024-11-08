@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificador de Poliedros Eulerianos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Verificador de Poliedros Eulerianos</h2>
+        <label for="vertices">Número de Vértices (V):</label>
+        <input type="number" id="vertices" placeholder="Digite o número de vértices" required>
+        <label for="arestas">Número de Arestas (A):</label>
+        <input type="number" id="arestas" placeholder="Digite o número de arestas" required>
+        <label for="faces">Número de Faces (F):</label>
+        <input type="number" id="faces" placeholder="Digite o número de faces" required>
+        <button onclick="verificarPoliedro()">Verificar</button>
+        <div id="resultado" class="result"></div>
+    </div>
+
+    <script>
+        function verificarPoliedro() {
+            const V = parseInt(document.getElementById('vertices').value);
+            const A = parseInt(document.getElementById('arestas').value);
+            const F = parseInt(document.getElementById('faces').value);
+            const resultado = document.getElementById('resultado');
+
+            if (isNaN(V) || isNaN(A) || isNaN(F)) {
+                resultado.textContent = 'Por favor, insira todos os valores.';
+                resultado.style.color = 'red';
+                return;
+            }
+
+            if (V - A + F === 2) {
+                resultado.textContent = 'Sim, é um poliedro euleriano!';
+                resultado.style.color = 'green';
+            } else {
+                resultado.textContent = 'Não é um poliedro euleriano.';
+                resultado.style.color = 'red';
+            }
+        }
+    </script>
+</body>
+</html>
